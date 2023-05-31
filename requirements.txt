@@ -1,0 +1,6 @@
+scipy
+katonic-1.6.1-py3-none-any.whl
+optuna
+seaborn
+plotly
+boto3

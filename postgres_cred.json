@@ -1,0 +1,9 @@
+{
+  "HOST": "20.204.230.16",
+  "PORT": 5432,
+  "DB_NAME": "postgres",
+  "USER": "postgres",
+  "PASSWORD": "JQBWiOIz5l",
+  "TABLE_NAME": "House_Data",
+  "DB_SCHEMA": "public"
+}

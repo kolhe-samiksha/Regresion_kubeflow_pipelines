@@ -1,0 +1,816 @@
+{
+  "doc_type": "pipeline",
+  "version": "3.0",
+  "json_schema": "http://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "id": "elyra-auto-generated-pipeline",
+  "primary_pipeline": "primary",
+  "pipelines": [
+    {
+      "id": "primary",
+      "nodes": [
+        {
+          "id": "f83087ad-822d-464d-9c1c-eac915d558f8",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "dependencies": [],
+              "include_subdirectories": false,
+              "outputs": [
+                "processed_data.csv"
+              ],
+              "env_vars": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_secrets": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_tolerations": [],
+              "mounted_volumes": [],
+              "filename": "Eda_Preprocessing.ipynb",
+              "runtime_image": "quay.io/katonic/common:pandas1.4.1"
+            },
+            "label": "",
+            "ui_data": {
+              "label": "Eda_Preprocessing.ipynb",
+              "image": "/ws-329da30f-2fa2-49e5-ba99-4593bcde2d92-641adea97dab73d68f9fe8e7/static/elyra/notebook.svg",
+              "x_pos": 255,
+              "y_pos": 280,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "8c14490e-e861-4d92-b4f6-d1e3f710c210",
+                  "node_id_ref": "d5bc248d-623f-4260-8e0e-13832621e087",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "366ac41b-d580-488c-a512-662785281b0e",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "dependencies": [],
+              "include_subdirectories": false,
+              "outputs": [
+                "Feature_engineering.csv"
+              ],
+              "env_vars": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_secrets": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_tolerations": [],
+              "mounted_volumes": [],
+              "filename": "Feature_Engineering.ipynb",
+              "runtime_image": "quay.io/katonic/common:pandas1.4.1"
+            },
+            "label": "",
+            "ui_data": {
+              "label": "Feature_Engineering.ipynb",
+              "image": "/ws-329da30f-2fa2-49e5-ba99-4593bcde2d92-641adea97dab73d68f9fe8e7/static/elyra/notebook.svg",
+              "x_pos": 455,
+              "y_pos": 280,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "2f558f72-678e-4caa-9678-c19e6d6f3dee",
+                  "node_id_ref": "f83087ad-822d-464d-9c1c-eac915d558f8",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "030772c5-1698-4c10-b217-16f8bbae51cb",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "dependencies": [
+                "katonic-1.6.1-py3-none-any.whl"
+              ],
+              "include_subdirectories": false,
+              "outputs": [
+                "regressor_obj.pickle",
+                "Feature_engineering.csv"
+              ],
+              "env_vars": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_secrets": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_tolerations": [],
+              "mounted_volumes": [],
+              "filename": "register_best_model.ipynb",
+              "runtime_image": "quay.io/katonic/common:pandas1.4.1"
+            },
+            "label": "",
+            "ui_data": {
+              "label": "register_best_model.ipynb",
+              "image": "/ws-329da30f-2fa2-49e5-ba99-4593bcde2d92-641adea97dab73d68f9fe8e7/static/elyra/notebook.svg",
+              "x_pos": 1364,
+              "y_pos": 277,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "a6d0cc4d-b549-4b74-a8ed-d3f2cc68f245",
+                  "node_id_ref": "1e8a2223-3804-462d-9ac8-3d03ef496ba3",
+                  "port_id_ref": "outPort"
+                },
+                {
+                  "id": "79a2596e-0ee8-4a5d-8630-12f3da5d1ff6",
+                  "node_id_ref": "048cdfb7-93c7-41a8-9e5f-5171b3548dfe",
+                  "port_id_ref": "outPort"
+                },
+                {
+                  "id": "53d45552-22bd-4103-9a1d-88286c674097",
+                  "node_id_ref": "ef2ba295-b2ee-420e-ba2a-963ca782a3e4",
+                  "port_id_ref": "outPort"
+                },
+                {
+                  "id": "08e6a222-f8d8-4374-9e83-b4e85895128c",
+                  "node_id_ref": "4e353701-6eb1-4fe5-be08-f8a0163c459d",
+                  "port_id_ref": "outPort"
+                },
+                {
+                  "id": "74bb7abb-4a87-44c1-9c55-365d61e621ce",
+                  "node_id_ref": "508b281e-2313-43fb-8154-356e454ba101",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "5af6c56c-905a-48cb-9688-fa2404108ea6",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "dependencies": [],
+              "include_subdirectories": false,
+              "outputs": [],
+              "env_vars": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_secrets": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_tolerations": [],
+              "mounted_volumes": [],
+              "filename": "model_inference_with_spark.ipynb",
+              "runtime_image": "quay.io/katonic/common:pandas1.4.1"
+            },
+            "label": "",
+            "ui_data": {
+              "label": "model_inference_with_spark.ipynb",
+              "image": "/ws-329da30f-2fa2-49e5-ba99-4593bcde2d92-641adea97dab73d68f9fe8e7/static/elyra/notebook.svg",
+              "x_pos": 1562,
+              "y_pos": 278,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "a817335d-ae27-4597-a9ed-71de5685bae5",
+                  "node_id_ref": "030772c5-1698-4c10-b217-16f8bbae51cb",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "5178018f-6b62-4535-9b47-6d9ad88ac0f9",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "dependencies": [
+                "katonic-1.6.1-py3-none-any.whl"
+              ],
+              "include_subdirectories": false,
+              "outputs": [
+                "regressor_obj.pickle"
+              ],
+              "env_vars": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_secrets": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_tolerations": [],
+              "mounted_volumes": [],
+              "filename": "regressor_0bject_pickle.ipynb",
+              "runtime_image": "quay.io/katonic/common:pandas1.4.1"
+            },
+            "label": "",
+            "ui_data": {
+              "label": "regressor_0bject_pickle.ipynb",
+              "image": "/ws-329da30f-2fa2-49e5-ba99-4593bcde2d92-641adea97dab73d68f9fe8e7/static/elyra/notebook.svg",
+              "x_pos": 673,
+              "y_pos": 280,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "b30eb136-356c-42a7-92c6-ce59f0d475cc",
+                  "node_id_ref": "366ac41b-d580-488c-a512-662785281b0e",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "1e8a2223-3804-462d-9ac8-3d03ef496ba3",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "dependencies": [
+                "katonic-1.6.1-py3-none-any.whl"
+              ],
+              "include_subdirectories": false,
+              "outputs": [
+                "linear_regression.pickle"
+              ],
+              "env_vars": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_secrets": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_tolerations": [],
+              "mounted_volumes": [],
+              "filename": "Linear_Regression.ipynb",
+              "runtime_image": "quay.io/katonic/common:pandas1.4.1"
+            },
+            "label": "",
+            "ui_data": {
+              "label": "Linear_Regression.ipynb",
+              "image": "/ws-329da30f-2fa2-49e5-ba99-4593bcde2d92-641adea97dab73d68f9fe8e7/static/elyra/notebook.svg",
+              "x_pos": 1010,
+              "y_pos": 50,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "41a4c60f-4b12-4d2f-b55b-a568ae724989",
+                  "node_id_ref": "5178018f-6b62-4535-9b47-6d9ad88ac0f9",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "048cdfb7-93c7-41a8-9e5f-5171b3548dfe",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "dependencies": [
+                "katonic-1.6.1-py3-none-any.whl"
+              ],
+              "include_subdirectories": false,
+              "outputs": [
+                "xgb_regressor.pickle"
+              ],
+              "env_vars": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_secrets": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_tolerations": [],
+              "mounted_volumes": [],
+              "filename": "XGB_regressor.ipynb",
+              "runtime_image": "quay.io/katonic/common:pandas1.4.1"
+            },
+            "label": "",
+            "ui_data": {
+              "label": "XGB_regressor.ipynb",
+              "image": "/ws-329da30f-2fa2-49e5-ba99-4593bcde2d92-641adea97dab73d68f9fe8e7/static/elyra/notebook.svg",
+              "x_pos": 1010,
+              "y_pos": 165,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "720b4170-6242-445d-b6a9-85fed00110e8",
+                  "node_id_ref": "5178018f-6b62-4535-9b47-6d9ad88ac0f9",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "4e353701-6eb1-4fe5-be08-f8a0163c459d",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "dependencies": [
+                "katonic-1.6.1-py3-none-any.whl"
+              ],
+              "include_subdirectories": false,
+              "outputs": [
+                "gradient_boost.pickle"
+              ],
+              "env_vars": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_secrets": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_tolerations": [],
+              "mounted_volumes": [],
+              "filename": "GradientBoost_regressor.ipynb",
+              "runtime_image": "quay.io/katonic/common:pandas1.4.1"
+            },
+            "label": "",
+            "ui_data": {
+              "label": "GradientBoost_regressor.ipynb",
+              "image": "/ws-329da30f-2fa2-49e5-ba99-4593bcde2d92-641adea97dab73d68f9fe8e7/static/elyra/notebook.svg",
+              "x_pos": 1010,
+              "y_pos": 395,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "a052c7fc-8362-41e5-b362-29fabdbffe1a",
+                  "node_id_ref": "5178018f-6b62-4535-9b47-6d9ad88ac0f9",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "508b281e-2313-43fb-8154-356e454ba101",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "dependencies": [
+                "katonic-1.6.1-py3-none-any.whl"
+              ],
+              "include_subdirectories": false,
+              "outputs": [
+                "l2_regularizer.pickle"
+              ],
+              "env_vars": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_secrets": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_tolerations": [],
+              "mounted_volumes": [],
+              "filename": "Ridge_regressor.ipynb",
+              "runtime_image": "quay.io/katonic/common:pandas1.4.1"
+            },
+            "label": "",
+            "ui_data": {
+              "label": "Ridge_regressor.ipynb",
+              "image": "/ws-329da30f-2fa2-49e5-ba99-4593bcde2d92-641adea97dab73d68f9fe8e7/static/elyra/notebook.svg",
+              "x_pos": 1010,
+              "y_pos": 510,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "5943b0aa-6238-4601-a01a-b46b6a87c68b",
+                  "node_id_ref": "5178018f-6b62-4535-9b47-6d9ad88ac0f9",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "ef2ba295-b2ee-420e-ba2a-963ca782a3e4",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "dependencies": [
+                "katonic-1.6.1-py3-none-any.whl"
+              ],
+              "include_subdirectories": false,
+              "outputs": [
+                "rf_reg.pickle"
+              ],
+              "env_vars": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_secrets": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_tolerations": [],
+              "mounted_volumes": [],
+              "filename": "RandomForest_regressor.ipynb",
+              "runtime_image": "quay.io/katonic/common:pandas1.4.1"
+            },
+            "label": "",
+            "ui_data": {
+              "label": "RandomForest_regressor.ipynb",
+              "image": "/ws-329da30f-2fa2-49e5-ba99-4593bcde2d92-641adea97dab73d68f9fe8e7/static/elyra/notebook.svg",
+              "x_pos": 1010,
+              "y_pos": 280,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "eeb21625-1fcd-4132-8264-7fe891606feb",
+                  "node_id_ref": "5178018f-6b62-4535-9b47-6d9ad88ac0f9",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "d5bc248d-623f-4260-8e0e-13832621e087",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "dependencies": [
+                "postgres_cred.json"
+              ],
+              "include_subdirectories": false,
+              "outputs": [
+                "Bengaluru_House_Data.csv"
+              ],
+              "env_vars": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_secrets": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_tolerations": [],
+              "mounted_volumes": [],
+              "filename": "Data_loading.ipynb",
+              "runtime_image": "quay.io/katonic/common:pandas1.4.1"
+            },
+            "label": "Data_Loading_from_Postgres",
+            "ui_data": {
+              "label": "Data_Loading_from_Postgres",
+              "image": "/ws-329da30f-2fa2-49e5-ba99-4593bcde2d92-641adea97dab73d68f9fe8e7/static/elyra/notebook.svg",
+              "x_pos": 50,
+              "y_pos": 280,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "app_data": {
+        "ui_data": {
+          "comments": []
+        },
+        "version": 8,
+        "runtime_type": "KUBEFLOW_PIPELINES",
+        "properties": {
+          "name": "regression_pipeline",
+          "runtime": "Kubeflow Pipelines",
+          "pipeline_defaults": {
+            "kubernetes_tolerations": [],
+            "kubernetes_pod_annotations": [],
+            "kubernetes_pod_labels": [],
+            "mounted_volumes": [
+              {
+                "path": "/kfs-private",
+                "pvc_name": "private-storage-1383434c",
+                "read_only": false
+              }
+            ],
+            "kubernetes_shared_mem_size": {},
+            "env_vars": [],
+            "kubernetes_secrets": []
+          },
+          "pipeline_parameters": {
+            "pipeline_defaults": {
+              "kubernetes_tolerations": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "mounted_volumes": [
+                {
+                  "path": "/kfs-private",
+                  "pvc_name": "private-storage-1383434c",
+                  "sub_path": "",
+                  "read_only": false
+                }
+              ],
+              "kubernetes_shared_mem_size": {},
+              "env_vars": [],
+              "kubernetes_secrets": []
+            },
+            "name": "regression_pipeline",
+            "runtime": "Kubeflow Pipelines"
+          }
+        }
+      },
+      "runtime_ref": ""
+    }
+  ],
+  "schemas": []
+}
